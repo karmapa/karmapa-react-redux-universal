@@ -19,7 +19,7 @@ export default function reducer(state = initialState, action = {}) {
         saveError: null,
       };
     case IS_VALID_FAIL:
-      return typeof action.error === 'string' ? {
+      return ('string' === typeof action.error) ? {
         ...state,
         saveError: action.error
       } : state;

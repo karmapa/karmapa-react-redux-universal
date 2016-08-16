@@ -70,7 +70,7 @@ export default function reducer(state = initialState, action = {}) {
         }
       };
     case SAVE_FAIL:
-      return typeof action.error === 'string' ? {
+      return ('string' === typeof action.error) ? {
         ...state,
         saveError: {
           ...state.saveError,

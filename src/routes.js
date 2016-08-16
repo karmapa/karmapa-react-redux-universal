@@ -24,7 +24,7 @@ export default (store) => {
       cb();
     }
 
-    if (!isAuthLoaded(store.getState())) {
+    if (! isAuthLoaded(store.getState())) {
       store.dispatch(loadAuth()).then(checkAuth);
     }
     else {

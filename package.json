@@ -136,8 +136,8 @@
     "socket.io-client": "1.4.5",
     "superagent": "1.8.0",
     "url-loader": "0.5.7",
-    "warning": "2.1.0",
-    "webpack-isomorphic-tools": "2.2.31"
+    "warning": "3.0.0",
+    "webpack-isomorphic-tools": "2.6.3"
   },
   "devDependencies": {
     "autoprefixer-loader": "3.2.0",
@@ -186,8 +186,8 @@
     "style-loader": "0.13.0",
     "timekeeper": "0.0.5",
     "webpack": "1.13.2",
-    "webpack-dev-middleware": "1.5.1",
-    "webpack-hot-middleware": "2.10.0"
+    "webpack-dev-middleware": "1.8.4",
+    "webpack-hot-middleware": "2.13.0"
   },
   "engines": {
     "node": "5.6.0"

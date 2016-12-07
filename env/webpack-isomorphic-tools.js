@@ -12,7 +12,7 @@ module.exports = {
   //
   // debug: true,
 
-  webpack_assets_file_path: './webpack/webpack-assets.json',
+  webpack_assets_file_path: './env/webpack-assets.json',
 
   assets: {
     images: {

@@ -10,7 +10,7 @@ module.exports = function (config) {
     frameworks: [ 'mocha' ],
 
     files: [
-      './node_modules/phantomjs-polyfill/bind-polyfill.js',
+      './../node_modules/phantomjs-polyfill/bind-polyfill.js',
       'tests.webpack.js'
     ],
 

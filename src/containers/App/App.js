@@ -1,17 +1,17 @@
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { IndexLink } from 'react-router';
-import { LinkContainer } from 'react-router-bootstrap';
-import Navbar from 'react-bootstrap/lib/Navbar';
-import Nav from 'react-bootstrap/lib/Nav';
-import NavItem from 'react-bootstrap/lib/NavItem';
+import React, {Component, PropTypes} from 'react';
+import {IndexLink} from 'react-router';
+import {LinkContainer} from 'react-router-bootstrap';
+import {asyncConnect} from 'redux-async-connect';
+import {connect} from 'react-redux';
+import {push} from 'react-router-redux';
+
+import {Nav, Navbar, NavItem} from 'react-bootstrap';
+
 import Helmet from 'react-helmet';
-import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
-import { isLoaded as isAuthLoaded, load as loadAuth, logout } from 'redux/modules/auth';
-import { InfoBar } from 'components';
-import { push } from 'react-router-redux';
+
+import {isLoaded as isInfoLoaded, load as loadInfo} from 'redux/modules/info';
+import {isLoaded as isAuthLoaded, load as loadAuth, logout} from 'redux/modules/auth';
 import config from '../../config';
-import { asyncConnect } from 'redux-async-connect';
 
 @asyncConnect([{
   promise: ({store: {dispatch, getState}}) => {
@@ -78,19 +78,6 @@ export default class App extends Component {
 
           <Navbar.Collapse eventKey={0}>
             <Nav navbar>
-              {user && <LinkContainer to="/chat">
-                <NavItem eventKey={1}>Chat</NavItem>
-              </LinkContainer>}
-
-              <LinkContainer to="/widgets">
-                <NavItem eventKey={2}>Widgets</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/survey">
-                <NavItem eventKey={3}>Survey</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/about">
-                <NavItem eventKey={4}>About Us</NavItem>
-              </LinkContainer>
 
               {!user &&
               <LinkContainer to="/login">
@@ -116,7 +103,6 @@ export default class App extends Component {
         <div className={styles.appContent}>
           {this.props.children}
         </div>
-        <InfoBar/>
 
         <div className="well text-center">
           Have questions? Ask for help <a

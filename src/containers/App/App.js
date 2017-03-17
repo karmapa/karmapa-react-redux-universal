@@ -9,27 +9,25 @@ import {Nav, Navbar, NavItem} from 'react-bootstrap';
 
 import Helmet from 'react-helmet';
 
-import {isLoaded as isInfoLoaded, load as loadInfo} from 'redux/modules/info';
 import {isLoaded as isAuthLoaded, load as loadAuth, logout} from 'redux/modules/auth';
 import config from '../../config';
 
+const styles = require('./App.scss');
+
 @asyncConnect([{
   promise: ({store: {dispatch, getState}}) => {
+
     const promises = [];
 
-    if (!isInfoLoaded(getState())) {
-      promises.push(dispatch(loadInfo()));
-    }
-    if (!isAuthLoaded(getState())) {
+    if (! isAuthLoaded(getState())) {
       promises.push(dispatch(loadAuth()));
     }
 
     return Promise.all(promises);
   }
 }])
-@connect(
-  state => ({user: state.auth.user}),
-  {logout, pushState: push})
+@connect(state => ({user: state.auth.user}),
+{logout, pushState: push})
 export default class App extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
@@ -43,7 +41,8 @@ export default class App extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    if (!this.props.user && nextProps.user) {
+
+    if (! this.props.user && nextProps.user) {
       // login
       this.props.pushState('/loginSuccess');
     }
@@ -60,7 +59,6 @@ export default class App extends Component {
 
   render() {
     const {user} = this.props;
-    const styles = require('./App.scss');
 
     return (
       <div className={styles.app}>
@@ -102,13 +100,6 @@ export default class App extends Component {
 
         <div className={styles.appContent}>
           {this.props.children}
-        </div>
-
-        <div className="well text-center">
-          Have questions? Ask for help <a
-          href="https://github.com/erikras/react-redux-universal-hot-example/issues"
-          target="_blank">on Github</a> or in the <a
-          href="https://discord.gg/0ZcbPKXt5bZZb1Ko" target="_blank">#react-redux-universal</a> Discord channel.
         </div>
       </div>
     );

@@ -73,7 +73,7 @@ export default function reducer(state = initialState, action = {}) {
   }
 }
 
-export function isLoaded(globalState) {
+export function isAuthLoaded(globalState) {
   return globalState.auth && globalState.auth.loaded;
 }
 

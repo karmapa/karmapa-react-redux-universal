@@ -14,7 +14,7 @@ const LOGOUT_SUCCESS = 'karmapa/auth/LOGOUT_SUCCESS';
 const LOGOUT_FAIL = 'karmapa/auth/LOGOUT_FAIL';
 
 const initialState = Map({
-  loaded: false
+  isAuthLoaded: false
 });
 
 export default createReducer(initialState, {
@@ -23,13 +23,13 @@ export default createReducer(initialState, {
 
   [LOAD_AUTH_SUCCESS]: (state, action) => {
     return state.set('loading', false)
-      .set('loaded', false)
+      .set('isAuthLoaded', false)
       .set('user', action.result);
   },
 
   [LOAD_AUTH_FAIL]: (state, action) => {
     return state.set('loading', false)
-      .set('loaded', false)
+      .set('isAuthLoaded', false)
       .set('error', action.error);
   },
 
@@ -61,7 +61,7 @@ export default createReducer(initialState, {
 });
 
 export function isAuthLoaded(globalState) {
-  return globalState.auth && globalState.auth.get('loaded');
+  return globalState.auth && globalState.auth.get('isAuthLoaded');
 }
 
 export function loadAuth() {

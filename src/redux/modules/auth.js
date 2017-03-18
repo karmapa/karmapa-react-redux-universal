@@ -19,7 +19,8 @@ const initialState = Map({
   isAuthLoading: false,
   errorAuth: null,
 
-  isLoggingIn: false
+  isLoggingIn: false,
+  errorLogin: null
 });
 
 export default createReducer(initialState, {
@@ -48,7 +49,7 @@ export default createReducer(initialState, {
   [LOGIN_FAIL]: (state, action) => {
     return state.set('isLoggingIn', false)
       .set('user', null)
-      .set('loginError', action.error);
+      .set('errorLogin', action.error);
   },
 
   [LOGOUT]: (state) => state.set('loggingOut', true),

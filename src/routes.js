@@ -1,13 +1,8 @@
 import React from 'react';
 import {IndexRoute, Route} from 'react-router';
 import {isAuthLoaded, loadAuth} from 'redux/modules/auth';
-import {
-    App,
-    Home,
-    Login,
-    LoginSuccess,
-    NotFound,
-  } from 'containers';
+
+import {App, Home, Login, LoginSuccess, NotFound} from './containers';
 
 export default (store) => {
 

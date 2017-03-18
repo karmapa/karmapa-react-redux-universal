@@ -8,7 +8,7 @@ import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
 
 import {isAuthLoaded, loadAuth, logout} from 'redux/modules/auth';
-import config from '../../config';
+import config from './../../config';
 
 const styles = require('./App.scss');
 

@@ -5,4 +5,4 @@
  *
  */
 
-export GithubButton from './GithubButton/GithubButton';
+export Counter from './Counter/Counter';

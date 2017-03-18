@@ -9,6 +9,7 @@ import {push} from 'react-router-redux';
 
 import {isAuthLoaded, loadAuth, logout} from 'redux/modules/auth';
 import config from './../../config';
+import {mapConnect} from './../../helpers';
 
 const styles = require('./App.scss');
 
@@ -23,7 +24,9 @@ const styles = require('./App.scss');
     return Promise.all(promises);
   }
 }])
-@connect(state => ({user: state.auth.user}),
+@connect(state => mapConnect(state, {
+  user: 'auth.user'
+}),
 {logout, push})
 export default class App extends Component {
 

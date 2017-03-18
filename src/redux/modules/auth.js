@@ -1,3 +1,5 @@
+import {Map} from 'immutable';
+import {createReducer} from 'redux-immutablejs';
 
 const LOAD_AUTH = 'karmapa/auth/LOAD_AUTH';
 const LOAD_AUTH_SUCCESS = 'karmapa/auth/LOAD_AUTH_SUCCESS';
@@ -11,73 +13,55 @@ const LOGOUT = 'karmapa/auth/LOGOUT';
 const LOGOUT_SUCCESS = 'karmapa/auth/LOGOUT_SUCCESS';
 const LOGOUT_FAIL = 'karmapa/auth/LOGOUT_FAIL';
 
-const initialState = {
+const initialState = Map({
   loaded: false
-};
+});
 
-export default function reducer(state = initialState, action = {}) {
-  switch (action.type) {
-    case LOAD_AUTH:
-      return {
-        ...state,
-        loading: true
-      };
-    case LOAD_AUTH_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        loaded: true,
-        user: action.result
-      };
-    case LOAD_AUTH_FAIL:
-      return {
-        ...state,
-        loading: false,
-        loaded: false,
-        error: action.error
-      };
-    case LOGIN:
-      return {
-        ...state,
-        loggingIn: true
-      };
-    case LOGIN_SUCCESS:
-      return {
-        ...state,
-        loggingIn: false,
-        user: action.result
-      };
-    case LOGIN_FAIL:
-      return {
-        ...state,
-        loggingIn: false,
-        user: null,
-        loginError: action.error
-      };
-    case LOGOUT:
-      return {
-        ...state,
-        loggingOut: true
-      };
-    case LOGOUT_SUCCESS:
-      return {
-        ...state,
-        loggingOut: false,
-        user: null
-      };
-    case LOGOUT_FAIL:
-      return {
-        ...state,
-        loggingOut: false,
-        logoutError: action.error
-      };
-    default:
-      return state;
+export default createReducer(initialState, {
+
+  [LOAD_AUTH]: (state) => state.set('loading', true),
+
+  [LOAD_AUTH_SUCCESS]: (state, action) => {
+    return state.set('loading', false)
+      .set('loaded', false)
+      .set('user', action.result);
+  },
+
+  [LOAD_AUTH_FAIL]: (state, action) => {
+    return state.set('loading', false)
+      .set('loaded', false)
+      .set('error', action.error);
+  },
+
+  [LOGIN]: (state) => state.set('loggingIn', true),
+
+  [LOGIN_SUCCESS]: (state, action) => {
+    return state.set('loggingIn', false)
+      .set('user', action.result);
+  },
+
+  [LOGIN_FAIL]: (state, action) => {
+    return state.set('loggingIn', false)
+      .set('user', null)
+      .set('loginError', action.error);
+  },
+
+  [LOGOUT]: (state) => state.set('loggingOut', true),
+
+  [LOGOUT_SUCCESS]: (state) => {
+    return state.set('loggingOut', false)
+      .set('user', null);
+  },
+
+  [LOGOUT_FAIL]: (state, action) => {
+    return state.set('loggingOut', false)
+      .set('logoutError', action.error);
   }
-}
+
+});
 
 export function isAuthLoaded(globalState) {
-  return globalState.auth && globalState.auth.loaded;
+  return globalState.auth && globalState.auth.get('loaded');
 }
 
 export function loadAuth() {

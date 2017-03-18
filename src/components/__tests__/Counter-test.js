@@ -1,30 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {renderIntoDocument} from 'react-addons-test-utils';
-import { expect} from 'chai';
-import { InfoBar } from 'components';
-import { Provider } from 'react-redux';
-import { browserHistory } from 'react-router';
+import {expect} from 'chai';
+import {Provider} from 'react-redux';
+import {browserHistory} from 'react-router';
+import {Map} from 'immutable';
+
+import {Counter} from './../';
 import createStore from 'redux/create';
-import ApiClient from 'helpers/ApiClient';
+import {ApiClient} from './../../helpers';
+
 const client = new ApiClient();
 
-describe('InfoBar', () => {
-  const mockStore = {
-    info: {
-      load: () => {},
-      loaded: true,
-      loading: false,
-      data: {
-        message: 'This came from the api server',
-        time: Date.now()
-      }
-    }
-  };
+describe('Counter', () => {
+
+  const mockStore = {};
+
   const store = createStore(browserHistory, client, mockStore);
   const renderer = renderIntoDocument(
     <Provider store={store} key="provider">
-      <InfoBar/>
+      <Counter />
     </Provider>
   );
   const dom = ReactDOM.findDOMNode(renderer);
@@ -33,19 +28,19 @@ describe('InfoBar', () => {
     return expect(renderer).to.be.ok;
   });
 
-  it('should render with correct value', () => {
-    const text = dom.getElementsByTagName('strong')[0].textContent;
-    expect(text).to.equal(mockStore.info.data.message);
+  it('should render with correct initial value', () => {
+    const text = dom.getElementsByTagName('span')[0].textContent;
+    expect(text).to.equal('0');
   });
 
-  it('should render with a reload button', () => {
+  it('should render with an add button', () => {
     const text = dom.getElementsByTagName('button')[0].textContent;
-    expect(text).to.be.a('string');
+    expect(text).to.equal('Add');
   });
 
   it('should render the correct className', () => {
-    const styles = require('components/InfoBar/InfoBar.scss');
-    expect(styles.infoBar).to.be.a('string');
-    expect(dom.className).to.include(styles.infoBar);
+    const styles = require('components/Counter/Counter.scss');
+    expect(styles.counter).to.be.a('string');
+    expect(dom.className).to.include(styles.counter);
   });
 });

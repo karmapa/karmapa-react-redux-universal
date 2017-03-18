@@ -3,7 +3,7 @@ import {Button} from 'react-bootstrap';
 
 const styles = require('./Counter.scss');
 
-export default class GithubButton extends Component {
+export default class Counter extends Component {
 
   static propTypes = {
     onAddButtonClick: PropTypes.func.isRequired,
@@ -16,7 +16,7 @@ export default class GithubButton extends Component {
 
     return (
       <div className={styles.counter}>
-        <span className={styles.value}>{value}</span>
+        <span className={styles.value}>{value || 0}</span>
         <Button bsStyle="success" onClick={onAddButtonClick}>Add</Button>
       </div>
     );

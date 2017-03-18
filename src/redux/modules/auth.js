@@ -19,16 +19,16 @@ const initialState = Map({
 
 export default createReducer(initialState, {
 
-  [LOAD_AUTH]: (state) => state.set('loading', true),
+  [LOAD_AUTH]: (state) => state.set('isAuthLoading', true),
 
   [LOAD_AUTH_SUCCESS]: (state, action) => {
-    return state.set('loading', false)
+    return state.set('isAuthLoading', false)
       .set('isAuthLoaded', false)
       .set('user', action.result);
   },
 
   [LOAD_AUTH_FAIL]: (state, action) => {
-    return state.set('loading', false)
+    return state.set('isAuthLoading', false)
       .set('isAuthLoaded', false)
       .set('error', action.error);
   },

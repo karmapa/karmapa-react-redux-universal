@@ -97,7 +97,8 @@ app.use((req, res) => {
         res.send('<!doctype html>\n' +
           ReactDOM.renderToString(<Html assets={webpackIsomorphicTools.assets()} component={component} store={store} />));
       });
-    } else {
+    }
+    else {
       res.status(404).send('Not found');
     }
   });

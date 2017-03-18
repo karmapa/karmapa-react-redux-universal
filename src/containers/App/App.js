@@ -1,13 +1,11 @@
+import Helmet from 'react-helmet';
 import React, {Component, PropTypes} from 'react';
 import {IndexLink} from 'react-router';
 import {LinkContainer} from 'react-router-bootstrap';
+import {Nav, Navbar, NavItem} from 'react-bootstrap';
 import {asyncConnect} from 'redux-async-connect';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
-
-import {Nav, Navbar, NavItem} from 'react-bootstrap';
-
-import Helmet from 'react-helmet';
 
 import {isLoaded as isAuthLoaded, load as loadAuth, logout} from 'redux/modules/auth';
 import config from '../../config';
@@ -22,7 +20,6 @@ const styles = require('./App.scss');
     if (! isAuthLoaded(getState())) {
       promises.push(dispatch(loadAuth()));
     }
-
     return Promise.all(promises);
   }
 }])
@@ -66,8 +63,7 @@ export default class App extends Component {
         <Navbar fixedTop>
           <Navbar.Header>
             <Navbar.Brand>
-              <IndexLink to="/" activeStyle={{color: '#33e0ff'}}>
-                <div className={styles.brand}/>
+              <IndexLink to="/">
                 <span>{config.app.title}</span>
               </IndexLink>
             </Navbar.Brand>
@@ -77,30 +73,32 @@ export default class App extends Component {
           <Navbar.Collapse eventKey={0}>
             <Nav navbar>
 
-              {!user &&
+              {! user &&
               <LinkContainer to="/login">
                 <NavItem eventKey={5}>Login</NavItem>
               </LinkContainer>}
+
               {user &&
               <LinkContainer to="/logout">
                 <NavItem eventKey={6} className="logout-link" onClick={this.handleLogout}>
                   Logout
                 </NavItem>
               </LinkContainer>}
+
             </Nav>
+
             {user &&
             <p className={styles.loggedInMessage + ' navbar-text'}>Logged in as <strong>{user.name}</strong>.</p>}
+
             <Nav navbar pullRight>
-              <NavItem eventKey={1} target="_blank" title="View on Github" href="https://github.com/erikras/react-redux-universal-hot-example">
+              <NavItem eventKey={1} target="_blank" title="View on Github" href="https://github.com/karmapa/karmapa-react-redux-universal">
                 <i className="fa fa-github"/>
               </NavItem>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
 
-        <div className={styles.appContent}>
-          {this.props.children}
-        </div>
+        <div className={styles.appContent}>{this.props.children}</div>
       </div>
     );
   }

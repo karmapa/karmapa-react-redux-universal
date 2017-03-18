@@ -1,7 +1,6 @@
 import PrettyError from 'pretty-error';
 import {urlencoded, json} from 'body-parser';
 import express from 'express';
-import http from 'http';
 import session from 'express-session';
 
 import * as auth from './controllers/auth';

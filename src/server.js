@@ -13,8 +13,7 @@ import {ReduxAsyncConnect, loadOnServer} from 'redux-async-connect';
 import {match} from 'react-router';
 import {syncHistoryWithStore} from 'react-router-redux';
 
-import ApiClient from './helpers/ApiClient';
-import Html from './helpers/Html';
+import {ApiClient, Html} from './helpers';
 import config, {host, port, apiHost, apiPort} from './config';
 import createStore from './redux/create';
 import getRoutes from './routes';

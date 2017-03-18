@@ -14,7 +14,8 @@ const LOGOUT_SUCCESS = 'karmapa/auth/LOGOUT_SUCCESS';
 const LOGOUT_FAIL = 'karmapa/auth/LOGOUT_FAIL';
 
 const initialState = Map({
-  isAuthLoaded: false
+  isAuthLoaded: false,
+  isAuthLoading: false
 });
 
 export default createReducer(initialState, {

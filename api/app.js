@@ -22,7 +22,7 @@ app.get('/auth', auth.auth);
 app.post('/auth/login', auth.login);
 app.post('/auth/logout', auth.logout);
 
-app.use((err, req, res, next) => {
+app.use((err, req, res, next) => {    // eslint-disable-line no-unused-vars
 
   if (err) {
     console.error('API ERROR:', pretty.render(err));

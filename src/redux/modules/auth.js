@@ -20,7 +20,10 @@ const initialState = Map({
   errorAuth: null,
 
   isLoggingIn: false,
-  errorLogin: null
+  errorLogin: null,
+
+  isLoggingOut: false,
+  errorLogout: null
 });
 
 export default createReducer(initialState, {
@@ -52,16 +55,16 @@ export default createReducer(initialState, {
       .set('errorLogin', action.error);
   },
 
-  [LOGOUT]: (state) => state.set('loggingOut', true),
+  [LOGOUT]: (state) => state.set('isLoggingOut', true),
 
   [LOGOUT_SUCCESS]: (state) => {
-    return state.set('loggingOut', false)
+    return state.set('isLoggingOut', false)
       .set('user', null);
   },
 
   [LOGOUT_FAIL]: (state, action) => {
-    return state.set('loggingOut', false)
-      .set('logoutError', action.error);
+    return state.set('isLoggingOut', false)
+      .set('errorLogout', action.error);
   }
 
 });

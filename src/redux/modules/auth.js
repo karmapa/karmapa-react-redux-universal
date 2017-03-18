@@ -1,15 +1,15 @@
 
-const LOAD_AUTH = 'redux-example/auth/LOAD_AUTH';
-const LOAD_AUTH_SUCCESS = 'redux-example/auth/LOAD_AUTH_SUCCESS';
-const LOAD_AUTH_FAIL = 'redux-example/auth/LOAD_AUTH_FAIL';
+const LOAD_AUTH = 'karmapa/auth/LOAD_AUTH';
+const LOAD_AUTH_SUCCESS = 'karmapa/auth/LOAD_AUTH_SUCCESS';
+const LOAD_AUTH_FAIL = 'karmapa/auth/LOAD_AUTH_FAIL';
 
-const LOGIN = 'redux-example/auth/LOGIN';
-const LOGIN_SUCCESS = 'redux-example/auth/LOGIN_SUCCESS';
-const LOGIN_FAIL = 'redux-example/auth/LOGIN_FAIL';
+const LOGIN = 'karmapa/auth/LOGIN';
+const LOGIN_SUCCESS = 'karmapa/auth/LOGIN_SUCCESS';
+const LOGIN_FAIL = 'karmapa/auth/LOGIN_FAIL';
 
-const LOGOUT = 'redux-example/auth/LOGOUT';
-const LOGOUT_SUCCESS = 'redux-example/auth/LOGOUT_SUCCESS';
-const LOGOUT_FAIL = 'redux-example/auth/LOGOUT_FAIL';
+const LOGOUT = 'karmapa/auth/LOGOUT';
+const LOGOUT_SUCCESS = 'karmapa/auth/LOGOUT_SUCCESS';
+const LOGOUT_FAIL = 'karmapa/auth/LOGOUT_FAIL';
 
 const initialState = {
   loaded: false

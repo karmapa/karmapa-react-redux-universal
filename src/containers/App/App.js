@@ -7,7 +7,7 @@ import {asyncConnect} from 'redux-async-connect';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
 
-import {isAuthLoaded, load as loadAuth, logout} from 'redux/modules/auth';
+import {isAuthLoaded, loadAuth, logout} from 'redux/modules/auth';
 import config from '../../config';
 
 const styles = require('./App.scss');

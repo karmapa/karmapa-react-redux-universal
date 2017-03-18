@@ -17,13 +17,13 @@ const initialState = Map({
 
   isAuthLoaded: false,
   isAuthLoading: false,
-  errorAuth: null,
+  authError: null,
 
   isLoggingIn: false,
-  errorLogin: null,
+  loginError: null,
 
   isLoggingOut: false,
-  errorLogout: null
+  logoutError: null
 });
 
 export default createReducer(initialState, {
@@ -39,7 +39,7 @@ export default createReducer(initialState, {
   [LOAD_AUTH_FAIL]: (state, action) => {
     return state.set('isAuthLoading', false)
       .set('isAuthLoaded', false)
-      .set('errorAuth', action.error);
+      .set('authError', action.error);
   },
 
   [LOGIN]: (state) => state.set('isLoggingIn', true),
@@ -52,7 +52,7 @@ export default createReducer(initialState, {
   [LOGIN_FAIL]: (state, action) => {
     return state.set('isLoggingIn', false)
       .set('user', null)
-      .set('errorLogin', action.error);
+      .set('loginError', action.error);
   },
 
   [LOGOUT]: (state) => state.set('isLoggingOut', true),
@@ -64,7 +64,7 @@ export default createReducer(initialState, {
 
   [LOGOUT_FAIL]: (state, action) => {
     return state.set('isLoggingOut', false)
-      .set('errorLogout', action.error);
+      .set('logoutError', action.error);
   }
 
 });

@@ -1,4 +1,3 @@
-import {expect} from 'chai';
 import request from 'supertest';
 
 const app = require('./../../app');
@@ -13,7 +12,7 @@ describe('auth', () => {
         .get('api/auth')
         .expect('Content-Type', /json/)
         .expect(200, 'ok')
-        .end((err, res) => {
+        .end((err) => {
           if (err) {
             throw err;
           }

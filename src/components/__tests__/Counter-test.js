@@ -4,7 +4,6 @@ import {renderIntoDocument} from 'react-addons-test-utils';
 import {expect} from 'chai';
 import {Provider} from 'react-redux';
 import {browserHistory} from 'react-router';
-import {Map} from 'immutable';
 
 import {Counter} from './../';
 import createStore from 'redux/create';

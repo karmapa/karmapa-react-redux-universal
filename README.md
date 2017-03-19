@@ -8,5 +8,5 @@
 # Difference between this repo and the original react-redux-universal-hot-example
 
  - Make this project atomic, other demos that are not needed to initialize a new preject were removed.
- - Use [Immutable.js](https://facebook.github.io/immutable-js/) to handle with reducers.
+ - Use [Immutable.js](https://facebook.github.io/immutable-js/) with redux.
  - Change api folder structure to be more like RESTful API design.

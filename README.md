@@ -1,7 +1,9 @@
 # Karmapa Universal Seed
 
+[![Build Status](https://travis-ci.org/karmapa/karmapa-react-redux-universal.svg?branch=master)](https://travis-ci.org/karmapa/karmapa-react-redux-universal)
+
  - This is a forked version of eikras/react-redux-universal-hot-example
- - For full instruction please refer to https://github.com/karmapa/karmapa-react-redux-universal
+ - For full instruction please refer to https://github.com/erikras/react-redux-universal-hot-example
 
 # Difference between this repo and the original react-redux-universal-hot-example
 
